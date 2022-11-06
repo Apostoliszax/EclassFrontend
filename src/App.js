@@ -14,7 +14,7 @@ function App() {
       <div className="App">
         <>
           <Navbar bg="dark" variant="dark">
-            <Container>
+            <Container >
               <Navbar.Brand as={Link} to="/Home">
                 Eclass++
               </Navbar.Brand>
@@ -23,7 +23,7 @@ function App() {
                   Courses
                 </Nav.Link>
                 <Nav.Link as={Link} to="/Grades">
-                  Features
+                  Grades
                 </Nav.Link>
               </Nav>
             </Container>
