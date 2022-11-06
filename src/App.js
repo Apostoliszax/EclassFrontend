@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { Courses } from "./components/Courses";
 import { Grades } from "./components/Grades";
 import { Home } from "./components/Home";
+import { Students } from "./components/Students";
+import { Professors } from "./components/Professors";
 
 function App() {
   return (
@@ -14,7 +16,7 @@ function App() {
       <div className="App">
         <>
           <Navbar bg="dark" variant="dark">
-            <Container >
+            <Container>
               <Navbar.Brand as={Link} to="/Home">
                 Eclass++
               </Navbar.Brand>
@@ -25,6 +27,12 @@ function App() {
                 <Nav.Link as={Link} to="/Grades">
                   Grades
                 </Nav.Link>
+                <Nav.Link as={Link} to="/Students">
+                  Students
+                </Nav.Link>
+                <Nav.Link as={Link} to="/Professors">
+                  Professors
+                </Nav.Link>
               </Nav>
             </Container>
           </Navbar>
@@ -32,6 +40,8 @@ function App() {
             <Route path="/Home" element={<Home />}></Route>
             <Route path="/Courses" element={<Courses />}></Route>
             <Route path="/Grades" element={<Grades />}></Route>
+            <Route path="/Students" element={<Students />}></Route>
+            <Route path="/Professors" element={<Professors />}></Route>
           </Routes>
         </>
       </div>
