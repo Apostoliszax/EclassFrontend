@@ -1,10 +1,17 @@
+import { Modal, Button, Alert } from "react-bootstrap";
 import React from "react";
 import Table from "./table";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AddStudent from "../Forms/AddStudent";
 
 export const Students = () => {
   const [dataTable, setDataTable] = useState([]);
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   useEffect(() => {
     axios("https://localhost:7281/api/students")
@@ -16,10 +23,40 @@ export const Students = () => {
     { heading: "Name", value: "name" },
     { heading: "Email", value: "email" },
   ];
+
   return (
-    <div className="App">
-      <h1>Our Students</h1>
-      <Table data={dataTable} column={column} />
+    <div>
+      <div className="App">
+        <h1>Our Student</h1>
+        <Table data={dataTable} column={column} />
+      </div>
+
+      <div>
+        <div className="col-sm-6">
+          <Button
+            onClick={handleShow}
+            className="btn btn-success"
+            data-toggle="modal"
+          >
+            <i className="material-icons">&#xE147;</i>{" "}
+            <span>Add New Student</span>
+          </Button>
+        </div>
+
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Add Student</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <AddStudent />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close Button
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
     </div>
   );
 };

@@ -17,9 +17,21 @@ export const Professors = () => {
     { heading: "Email", value: "email" },
   ];
   return (
-    <div className="App">
-      <h1>Our Professors</h1>
-      <Table data={dataTable} column={column} />
+    <div>
+      <div className="App">
+        <h1>Our Professors</h1>
+        <Table data={dataTable} column={column} />
+      </div>
+
+      <div>
+        <button
+          type="button"
+          class="btn btn-outline-success"
+          onClick={() => this.setState({ showModal: true })}
+        >
+          Add a Professor
+        </button>
+      </div>
     </div>
   );
 };

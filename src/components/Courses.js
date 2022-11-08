@@ -14,14 +14,26 @@ export const Courses = () => {
 
   const column = [
     { heading: "Name", value: "name" },
-    { heading: "Hours", value: "hours" },
     { heading: "Classroom", value: "classroom" },
+    { heading: "Hours", value: "hours" },
     { heading: "ECTS", value: "ects" },
   ];
   return (
-    <div className="App">
-      <h1>Our Courses</h1>
-      <Table data={dataTable} column={column} />
+    <div>
+      <div className="App">
+        <h1>Our Courses</h1>
+        <Table data={dataTable} column={column} />
+      </div>
+
+      <div>
+        <button
+          type="button"
+          class="btn btn-outline-success"
+          onClick={() => this.setState({ showModal: true })}
+        >
+          Add a course
+        </button>
+      </div>
     </div>
   );
 };

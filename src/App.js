@@ -9,7 +9,6 @@ import { Grades } from "./components/Grades";
 import { Home } from "./components/Home";
 import { Students } from "./components/Students";
 import { Professors } from "./components/Professors";
-import { AddStudent } from "./components/AddStudent";
 
 function App() {
   return (
@@ -34,9 +33,6 @@ function App() {
                 <Nav.Link as={Link} to="/Professors">
                   Professors
                 </Nav.Link>
-                <Nav.Link as={Link} to="/AddStudent">
-                  Add a Student
-                </Nav.Link>
               </Nav>
             </Container>
           </Navbar>
@@ -47,7 +43,6 @@ function App() {
             <Route path="/Grades" element={<Grades />}></Route>
             <Route path="/Students" element={<Students />}></Route>
             <Route path="/Professors" element={<Professors />}></Route>
-            <Route path="/AddStudent" element={<AddStudent />}></Route>
           </Routes>
         </>
       </div>
