@@ -2,39 +2,34 @@ import { Form, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function useAddStudent() {
-  const [newStudent, setNewStudent] = useState({
+function useAddProfessor() {
+  const [newProfessor, setNewProfessor] = useState({
     name: "",
     email: "",
-    gpa: 0,
-    hasThesis: false,
   });
 
   const onInputChange = (e) => {
-    setNewStudent({ ...newStudent, [e.target.name]: e.target.value });
+    setNewProfessor({ ...newProfessor, [e.target.name]: e.target.value });
   };
 
-  const { name, email, gpa } = newStudent;
+  const { name, email, gpa } = newProfessor;
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  function postStudent() {
+  function postProfessor() {
     axios
-      .post("https://localhost:7281/api/students", {
+      .post("https://localhost:7281/api/professors", {
         id: 0,
         name: document.getElementById("Name").value,
         email: document.getElementById("Email").value,
-        gpa: document.getElementById("GPA").value,
-        hasThesis: true,
-        courses: null,
       })
       .catch((err) => console.log(err.toJSON()));
   }
 
   return (
-    <Form id="AddStudentForm" onSubmit={postStudent}>
+    <Form id="AddProfessorForm" onSubmit={postProfessor}>
       <Form.Group>
         <Form.Control
           type="text"
@@ -57,21 +52,11 @@ function useAddStudent() {
           required
         />
       </Form.Group>
-      <Form.Group>
-        <Form.Control
-          type="number"
-          placeholder="GPA"
-          name="gpa"
-          id="GPA"
-          value={gpa}
-          onChange={(e) => onInputChange(e)}
-        />
-      </Form.Group>
       <Button variant="success" type="submit" block>
-        Add New Student
+        Add New Professor
       </Button>
     </Form>
   );
 }
 
-export default useAddStudent;
+export default useAddProfessor;

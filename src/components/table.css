@@ -13,3 +13,8 @@ table td {
   border: 1px solid #ddd;
   padding: 8px;
 }
+#actions {
+  background-color: red;
+
+  color: whitesmoke;
+}

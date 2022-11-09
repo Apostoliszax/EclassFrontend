@@ -1,4 +1,4 @@
-import { Modal, Button, Alert } from "react-bootstrap";
+import { Modal, Button, Alert, CardGroup } from "react-bootstrap";
 import React from "react";
 import Table from "./table";
 import { useEffect, useState } from "react";
@@ -22,12 +22,13 @@ export const Students = () => {
   const column = [
     { heading: "Name", value: "name" },
     { heading: "Email", value: "email" },
+    { heading: "GPA", value: "gpa" },
   ];
 
   return (
     <div>
       <div className="App">
-        <h1>Our Student</h1>
+        <h1>Our Students</h1>
         <Table data={dataTable} column={column} />
       </div>
 
@@ -38,7 +39,6 @@ export const Students = () => {
             className="btn btn-success"
             data-toggle="modal"
           >
-            <i className="material-icons">&#xE147;</i>{" "}
             <span>Add New Student</span>
           </Button>
         </div>

@@ -2,9 +2,16 @@ import React from "react";
 import Table from "./table";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AddCourse from "../Forms/AddCourse";
+import { Modal, Button, Alert, CardGroup } from "react-bootstrap";
 
 export const Courses = () => {
   const [dataTable, setDataTable] = useState([]);
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   useEffect(() => {
     axios("https://localhost:7281/api/courses")
@@ -25,15 +32,29 @@ export const Courses = () => {
         <Table data={dataTable} column={column} />
       </div>
 
-      <div>
-        <button
-          type="button"
-          class="btn btn-outline-success"
-          onClick={() => this.setState({ showModal: true })}
+      <div className="col-sm-6">
+        <Button
+          onClick={handleShow}
+          className="btn btn-success"
+          data-toggle="modal"
         >
-          Add a course
-        </button>
+          <span>Add New Course</span>
+        </Button>
       </div>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Course</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <AddCourse />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close Button
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 };
