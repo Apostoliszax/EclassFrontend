@@ -1,3 +1,4 @@
+import deleteEntity from "../deleteEntity";
 import "./table.css";
 
 const Table = ({ data, column }) => {
@@ -28,14 +29,18 @@ const TableRow = ({ item, column }) => (
         const itemSplit = columnItem.value.split(".");
         return <td>{item[itemSplit[0]][itemSplit[1]]}</td>;
       }
-
+      console.log(item);
       return <td>{item[`${columnItem.value}`]}</td>;
     })}
     <td>
-      <button id="deleteButton" type="button" class="btn btn-warning">
+      <button id="editButton" type="button" class="btn btn-warning">
         Edit
       </button>
-      <button type="button" class="btn btn-danger ">
+      <button
+        onClick={() => deleteEntity(item.id, item)}
+        type="button"
+        class="btn btn-danger "
+      >
         Delete
       </button>
     </td>
