@@ -13,8 +13,16 @@ table td {
   border: 1px solid #ddd;
   padding: 8px;
 }
-#actions {
-  background-color: red;
 
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#actionsHead {
+  background-color: black;
   color: whitesmoke;
+}
+#deleteButton {
+  margin: 1%;
 }

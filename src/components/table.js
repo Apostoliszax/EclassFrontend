@@ -8,6 +8,7 @@ const Table = ({ data, column }) => {
           {column.map((item, index) => (
             <TableHeadItem item={item} />
           ))}
+          <td id="actionsHead">Actions</td>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +31,14 @@ const TableRow = ({ item, column }) => (
 
       return <td>{item[`${columnItem.value}`]}</td>;
     })}
+    <td>
+      <button id="deleteButton" type="button" class="btn btn-warning">
+        Edit
+      </button>
+      <button type="button" class="btn btn-danger ">
+        Delete
+      </button>
+    </td>
   </tr>
 );
 
