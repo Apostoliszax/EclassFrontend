@@ -1,12 +1,20 @@
 import deleteEntity from "../deleteEntity";
 import { useEffect, useState } from "react";
 import EditCourse from "../Forms/EditCourse";
+import EditProfessor from "../Forms/EditProfessor";
+import EditStudent from "../Forms/EditStudent";
 import "./table.css";
 import { parsePath } from "react-router-dom";
+import { Modal, Button, Alert, CardGroup } from "react-bootstrap";
 
 const Table = ({ data, column, variation }) => {
   const [newCourse, setNewCourse] = useState(null);
+  const [newProfessor, setNewProfessor] = useState(null);
+  const [newStudent, setNewStudent] = useState(null);
+  const [show, setShow] = useState(false);
 
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
   return (
     <>
       <table>
@@ -25,23 +33,58 @@ const Table = ({ data, column, variation }) => {
                 item={item}
                 column={column}
                 setNewCourse={setNewCourse}
+                setNewProfessor={setNewProfessor}
+                setNewStudent={setNewStudent}
               />
             </>
           ))}
         </tbody>
       </table>
-      <EditCourse
-        course={newCourse}
-        setNewCourse={setNewCourse}
-        variation={variation}
-      />
+      {variation == "courses" ? (
+        <EditCourse
+          course={newCourse}
+          setNewCourse={setNewCourse}
+          variation={variation}
+        />
+      ) : (
+        ""
+      )}
+      {variation == "professors" ? (
+        <EditProfessor
+          professor={newProfessor}
+          setNewProfessor={setNewProfessor}
+          variation={variation}
+        />
+      ) : (
+        ""
+      )}
+      {variation == "students" ? (
+        <EditStudent
+          student={newStudent}
+          setNewStudent={setNewStudent}
+          variation={variation}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 };
 
 const TableHeadItem = ({ item }) => <th>{item.heading}</th>;
 
-const TableRow = ({ item, column, setNewCourse }) => {
+const TableRow = ({
+  item,
+  column,
+  setNewCourse,
+  setNewProfessor,
+  setNewStudent,
+}) => {
+  function HandleEditButton(item) {
+    setNewCourse(item);
+    setNewProfessor(item);
+    setNewStudent(item);
+  }
   return (
     <>
       <tr>
@@ -50,13 +93,12 @@ const TableRow = ({ item, column, setNewCourse }) => {
             const itemSplit = columnItem.value.split(".");
             return <td>{item[itemSplit[0]][itemSplit[1]]}</td>;
           }
-          console.log(item);
           return <td>{item[`${columnItem.value}`]}</td>;
         })}
         <td>
           <button
             id="editButton"
-            onClick={() => setNewCourse(item)}
+            onClick={() => HandleEditButton(item)}
             type="button"
             class="btn btn-warning"
           >

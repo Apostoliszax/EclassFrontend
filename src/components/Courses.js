@@ -16,7 +16,6 @@ export const Courses = () => {
   useEffect(() => {
     axios("https://localhost:7281/api/courses")
       .then((res) => setDataTable(res.data))
-      .catch((err) => console.log(err));
   }, []);
 
   const column = [

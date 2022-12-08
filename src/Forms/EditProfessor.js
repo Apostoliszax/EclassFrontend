@@ -10,10 +10,9 @@ function EditProfessor(params) {
   //   classroom: Professor.classroom,
   //   ects: Professor.ects,
   // });
-
   const onInputChange = (e) => {
     params.setNewProfessor({
-      ...params.Professor,
+      ...params.professor,
       [e.target.name]: e.target.value,
     });
   };
@@ -24,10 +23,10 @@ function EditProfessor(params) {
   //   e.preventDefault();
   // };
 
-  function putProfessor(Professor) {
+  function putProfessor(professor) {
     axios
-      .put(`https://localhost:7281/api/Professors/${Professor.id}`, {
-        id: Professor.id,
+      .put(`https://localhost:7281/api/Professors/${professor.id}`, {
+        id: professor.id,
         name: document.getElementById("Name").value,
         email: document.getElementById("Email").value,
       })
@@ -36,7 +35,7 @@ function EditProfessor(params) {
 
   return (
     <>
-      {params.Professor == null ? (
+      {params.professor == null ? (
         ""
       ) : (
         <>
@@ -44,7 +43,7 @@ function EditProfessor(params) {
             id="EditProfessorForm"
             onSubmit={(e) => {
               e.preventDefault();
-              putProfessor(params.Professor);
+              putProfessor(params.professor);
             }}
           >
             <Form.Group>
@@ -54,19 +53,19 @@ function EditProfessor(params) {
                 name="name"
                 id="Name"
                 disabled={false}
-                value={params.Professor.name}
+                value={params.professor.name}
                 onChange={(e) => onInputChange(e)}
                 required
               />
             </Form.Group>
             <Form.Group>
               <Form.Control
-                type="number"
+                type="Email"
                 placeholder="Email *"
                 name="email"
                 disabled={false}
                 id="Email"
-                value={params.Professor.email}
+                value={params.professor.email}
                 onChange={(e) => onInputChange(e)}
                 required
               />

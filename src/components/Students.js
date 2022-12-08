@@ -16,7 +16,6 @@ export const Students = () => {
   useEffect(() => {
     axios("https://localhost:7281/api/students")
       .then((res) => setDataTable(res.data))
-      .catch((err) => console.log(err));
   }, []);
 
   const column = [
@@ -29,7 +28,7 @@ export const Students = () => {
     <div>
       <div className="App">
         <h1>Our Students</h1>
-        <Table data={dataTable} column={column} />
+        <Table data={dataTable} column={column} variation={"students"} />
       </div>
 
       <div>

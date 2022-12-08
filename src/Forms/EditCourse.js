@@ -2,7 +2,7 @@ import { Form, Button, NavItem } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { render } from "@testing-library/react";
-
+import { Modal, Alert, CardGroup } from "react-bootstrap";
 function EditCourse(params) {
   // const [newCourse, setNewCourse] = useState({
   //   name: course.name,
