@@ -27,7 +27,7 @@ export const Professors = () => {
     <div>
       <div className="App">
         <h1>Our Professors</h1>
-        <Table data={dataTable} column={column} />
+        <Table data={dataTable} column={column} variation={"professors"}  />
       </div>
 
       <div>

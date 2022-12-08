@@ -29,7 +29,8 @@ export const Courses = () => {
     <div>
       <div className="App">
         <h1>Our Courses</h1>
-        <Table data={dataTable} column={column} />
+        <Table data={dataTable} column={column} variation={"courses"} />
+        
       </div>
 
       <div className="col-sm-6">
