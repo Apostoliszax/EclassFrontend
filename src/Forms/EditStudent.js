@@ -38,7 +38,7 @@ function EditStudent(params) {
   return (
     <>
       {params.student == null ? (
-        "OOOKKK"
+        ""
       ) : (
         <>
           <Form
